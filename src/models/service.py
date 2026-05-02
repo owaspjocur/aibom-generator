@@ -524,7 +524,9 @@ class AIBOMService:
                 if not any(r["url"] == p for r in external_refs):
                     # Try to infer if it's arxiv for comment
                     comment = "Research Paper"
-                    if "arxiv.org" in p:
+                    parsed_url = urlparse(p)
+                    host = (parsed_url.hostname or "").lower()
+                    if host == "arxiv.org" or host.endswith(".arxiv.org"):
                         comment = "ArXiv Paper"
                     
                     external_refs.append({
