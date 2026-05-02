@@ -1,4 +1,5 @@
 import unittest
+from urllib.parse import urlparse
 from src.utils.license_utils import normalize_license_id, get_license_url
 
 class TestLicenseUtils(unittest.TestCase):
@@ -12,7 +13,9 @@ class TestLicenseUtils(unittest.TestCase):
     def test_get_license_url(self):
         self.assertEqual(get_license_url("Apache-2.0"), "https://www.apache.org/licenses/LICENSE-2.0.txt")
         self.assertEqual(get_license_url("MIT"), "https://opensource.org/licenses/MIT")
-        self.assertTrue("spdx.org" in get_license_url("unknown-license"))
+        unknown_license_url = get_license_url("unknown-license")
+        parsed_unknown_license_url = urlparse(unknown_license_url)
+        self.assertEqual(parsed_unknown_license_url.hostname, "spdx.org")
 
 if __name__ == '__main__':
     unittest.main()
