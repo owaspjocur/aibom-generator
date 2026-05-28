@@ -31,7 +31,7 @@ dependencies = [
     "pydantic>=2.4.0",
     "python-multipart",
     "PyYAML>=6.0.1",
-    "requests>=2.31.0",
+    "requests>=2.33.0",
     "sentencepiece>=0.1.99",
     "torch>=2.0.0",
     "transformers>=4.36.0",
@@ -40,7 +40,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=7.0.0",
+    "pytest>=9.0.3",
     "pytest-cov>=4.0.0",
     "pytest-mock>=3.10.0",
     "ruff",
